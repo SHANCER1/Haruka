@@ -515,7 +515,7 @@ case 'pinterest':
                     reply('Terjadi kesalahan')
                 })
                 break
-case 'play': case 'song':
+case 'yt': case 'song':
 			if (args.length === 0) return reply(`Kirim perintah *${prefix}play* _Judul lagu yang akan dicari_`)
 			var srch = args.join(' ')
 			aramas = await yts(srch);
@@ -587,7 +587,7 @@ case 'leave':
 			haruka.sendMessage(from, 'Sayonara👋', text)
 			}, 0)
 			break
-case 'hidetag':
+case 'tagall':
 			if (!isGroup) return reply(lang.group())
 			if (!isGroupAdmins) return reply(lang.admin(groupName))
 			var value = q
@@ -604,13 +604,13 @@ case 'hidetag':
 			}
 			haruka.sendMessage(from, options, text)
 			break
-case 'linkgrup':case 'linkgroup': case 'linkgc':
+case 'link':case 'invite': case 'linkgc':
 			if (!isGroup) return reply(lang.group())
 			linkgc = await haruka.groupInviteCode(from)
 			yeh = `https://chat.whatsapp.com/${linkgc}\n\nlink Group *${groupName}*`
 			haruka.sendMessage(from, yeh, text, { quoted: mek })
 			break  
-case 'tagall':
+case 'tag':
 			if (!isGroup) return reply(lang.group())
 			if (!isGroupAdmins) return reply(lang.admin(groupName))
 			members_id = []
@@ -636,7 +636,7 @@ case 'setdesc': case 'setdesk':
 					await haruka.groupUpdateDescription(from, `${q}`)
 					haruka.sendMessage(from, `Sukses Mengubah Desk Grup Menjadi ${q}`, text, { quoted: mek })
 			break   
-case 'kick':
+case 'ban':
 			if (!isGroup) return reply(lang.group())
 			if (!isGroupAdmins) return reply(lang.admin(groupName))
 			if (!isBotGroupAdmins) return reply(lang.adminB())
